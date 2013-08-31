@@ -1,0 +1,17 @@
+<meta>
+	<script src="client.lua" type="client"/>
+	<script src="server.lua" type="server"/>
+	
+	<file src="models/corner_long.col"></file>
+	<file src="models/corner_long.dff"></file>
+	<file src="models/corner_short.col"></file>
+	<file src="models/corner_short.dff"></file>
+	<file src="models/cross_junction.col"></file>
+	<file src="models/cross_junction.dff"></file>
+	<file src="models/roads_texture.txd"></file>
+	<file src="models/straight_road.col"></file>
+	<file src="models/straight_road.dff"></file>
+	<file src="models/t_junction.col"></file>
+	<file src="models/t_junction.dff"></file>
+
+</meta>
