@@ -6,6 +6,7 @@ engineImportTXD ( txd, 2671 )
 engineImportTXD ( txd, 2672 )
 engineImportTXD ( txd, 2673 )
 engineImportTXD ( txd, 2674 )
+engineImportTXD ( txd, 2675 )
 
 col = engineLoadCOL ( "models/corner_long.col" )
 dff = engineLoadDFF ( "models/corner_long.dff", 2670 )
@@ -27,6 +28,10 @@ col = engineLoadCOL ( "models/t_junction.col" )
 dff = engineLoadDFF ( "models/t_junction.dff", 2674 )
 engineReplaceCOL (col, 2674)
 engineReplaceModel (dff, 2674)
+col = engineLoadCOL ( "models/grass.col" )
+dff = engineLoadDFF ( "models/grass.dff", 2675 )
+engineReplaceCOL (col, 2675)
+engineReplaceModel (dff, 2675)
 
 
 

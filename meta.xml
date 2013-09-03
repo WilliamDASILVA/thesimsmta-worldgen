@@ -13,5 +13,7 @@
 	<file src="models/straight_road.dff"></file>
 	<file src="models/t_junction.col"></file>
 	<file src="models/t_junction.dff"></file>
+	<file src="models/grass.col"></file>
+	<file src="models/grass.dff"></file>
 
 </meta>

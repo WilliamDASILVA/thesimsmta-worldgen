@@ -7,122 +7,68 @@ function(player, cmd)
 	outputChatBox(x..", "..y..", "..z)
 end)
 
+-- 0 = grass
+-- 1 = normal road
+-- 2 = + corner
+-- 3 = corner
+-- 4 = T corner
+
+
+	-- C		-		T		-		C
+	-- -		0		-		0		-
+	-- T		-		X		-		T
+	-- -		0		-		0		-
+	-- C		-		T		-		C
+
 
 World = {
-	objects = {}
+	map = {
+		{		{3, 90},		{1,0}, 		{4,90},			{1,0},		{3, 0}		},
+		{		{1,90},			{0,0},		{1, 90},		{0,0},		{1,90}		},
+		{		{4,180},		{1,0},		{2, 0},			{1,0},		{4,0}		},
+		{		{1,90},			{0,0},		{1, 90},		{0,0},		{1,90}		},
+		{		{4,180},		{1,0},		{2, 0},			{1,0},		{4,0}		},
+		{		{1,90},			{0,0},		{1, 90},		{0,0},		{1,90}		},
+		{		{4,180},		{1,0},		{2, 0},			{1,0},		{4,0}		},
+		{		{1,90},			{0,0},		{1, 90},		{0,0},		{1,90}		},
+		{		{4,180},		{1,0},		{2, 0},			{1,0},		{4,0}		},
+		{		{1,90},			{0,0},		{1, 90},		{0,0},		{1,90}		},
+		{		{4,180},		{1,0},		{2, 0},			{1,0},		{4,0}		},
+		
+		{		{3, 180},		{1,0},		{3, 270}		}
+		
+		---- Line
+		-- |  Column
+	},
+	objects = {},
+	buildAreas = {}
 }
 
 
+function World.generate(map)
+	if map then
+		for index, line in pairs(map)do
+			for sIndex, column in pairs(line)do				
+				local object = createObject(getModelFromType(column[1]),
+									(index*15),
+									(sIndex*15),
+									50,
+									0,0, column[2]);
+				table.insert(World.objects, object);
+				
+				-- check if it's a build area
+				if column[1] == 0 then
+					local x = index*15;
+					local y = sIndex*15;
+					local z = 50;
 
-function World.generate(dimension)
-	if dimension then
-		for k = 0, dimension do
-			if k%2 == 0 then -- Si la ligne est une ligne est pair
-				for i = 0, dimension do
-					if i == 0 then
-						-- createObject(2671, -15,13.5, 50, 0, 0, 180)
-						if k == 0 then -- Si le coin, on met un qui tourne
-							createObject(2671,
-													i*(-15)-15,
-													(13.5*k)+13.5,
-													50,
-													0,0,180
-													)
-
-						else -- Si ce n'es pas un coin, on met un T
-							createObject(2674,
-													(( i*15)-15)-15/2,
-													(15*k)+6,
-													50,
-													0,0,90
-													)
-						end
-					-- elseif i == dimension then
-						-- outputDebugString("Last"..i)
-					else
+					local startX, startY = x-(15/2), y-(15/2);
+					local finalX, finalY = x+(15/2), y+(15/2);
 					
-						if i%2 == 0 then
-							if k == 0 then -- Si c'est le premier de la ligne, on met le T
-								createObject(2674,
-													(( i*15)-15)-15/2,
-													6,
-													50,
-													0,0,180
-													)
-
-							else -- Sinon, c'est que c'est un dans le milieu alors on met on +
-								createObject(2672,
-													(( i*15)-15)-15/2,
-													((k*15)+6),
-													50,
-													0,0,180
-													)
-							end
-							
-							if i == dimension-1 then -- Creation du dernier T de la ligne
-								if k == 0 then
-								
-								else
-								
-									createObject(2674,
-														(i*15)+7.5,
-														(k*15)+6,
-														50,
-														0,0,270
-														)
-								end
-							end
-						else
-							-- routes verticale
-							createObject(2673,
-												(i*15)-15,
-												(k*15),
-												50,
-												0, 0, 90
-												)
-												
-						end
-						
-						if k == 0 then -- Si dans la première ligne et dans la dernière colone, on met un qui tourne
-							if i == dimension then
-								createObject(2671,
-														(i*15)-15,
-														13.5,
-														50,
-														0,0,270
-														)
-							end
-						end
-					end
-				end
-			else -- Sinon, la ligne est impair
-				for i = 0, dimension do
-					if i%2 == 0 then -- Si c'est pair
-						if i == 0 then
-							createObject(2673,
-													0+((i*15)+1.5),
-													(k*15)-1.5,
-													50,
-													0, 0, 0
-													)
-							-- On cr�e aussi celui qui est au point 0
-							createObject(2673,
-													(-15)+(-13.5),
-													(k*15)-1.5,
-													50,
-													0, 0, 0
-													)
-						else
-							createObject(2673,
-													0+((i*15)+1.5),
-													(k*15)-1.5,
-													50,
-													0, 0, 0
-													)
-						end
-					else -- Impair, on met rien
-						
-					end
+					local tmp = {}
+					tmp.startX, tmp.startY = startX, startY;
+					
+					table.insert(World.buildAreas, tmp)
 				end
 			end
 		end
@@ -130,9 +76,22 @@ function World.generate(dimension)
 end
 
 function World.resStart()
-	World.generate(9)
+	World.generate(World.map)
 end
 
+function getModelFromType(id)
+	local l = {
+		[0] = 2675,
+		[1] = 2673,
+		[2] = 2672,
+		[3] = 2671,
+		[4] = 2674
+	}
+	
+	if l[id] then
+		return l[id];
+	end
+end
 
 
 --[[ Events ]]--
