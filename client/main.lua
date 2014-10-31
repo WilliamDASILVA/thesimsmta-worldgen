@@ -1,0 +1,6 @@
+--[[
+	Client - Main
+]]
+
+Client = {}
+

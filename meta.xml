@@ -1,7 +1,15 @@
 <meta>
-	<script src="client.lua" type="client"/>
-	<script src="server.lua" type="server"/>
+	<infos name="The Sims MTA World" author="FatalTerror" version="2.0" type="script"></infos>
+
+	<!-- Client -->
+	<script src="client/main.lua" type="client"/>
+	<script src="client/town.lua" type="client"/>
+
+	<!-- Server -->
+	<script src="server/main.lua" type="server"/>
+	<script src="server/town.lua" type="server"/>
 	
+	<!-- Files -->
 	<file src="models/corner_long.col"></file>
 	<file src="models/corner_long.dff"></file>
 	<file src="models/corner_short.col"></file>
@@ -15,5 +23,8 @@
 	<file src="models/t_junction.dff"></file>
 	<file src="models/grass.col"></file>
 	<file src="models/grass.dff"></file>
+
+	<!-- Export functions -->
+	<export function="TownInit" type="client"></export>
 
 </meta>

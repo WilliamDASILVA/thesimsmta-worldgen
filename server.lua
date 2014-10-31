@@ -62,11 +62,13 @@ function World.generate(map)
 					local y = sIndex*15;
 					local z = 50;
 
-					local startX, startY = x-(15/2), y-(15/2);
-					local finalX, finalY = x+(15/2), y+(15/2);
+					local startX, startY, startZ = x-(15/2), y-(15/2), z;
+					local finalX, finalY, finalZ = x+(15/2), y+(15/2), z
 					
 					local tmp = {}
-					tmp.startX, tmp.startY = startX, startY;
+					tmp.startX, tmp.startY, tmp.startZ = startX, startY, startZ;
+					tmp.finalX, tmp.finalY, tmp.finalZ = finalX, finalY, finalZ;
+					tmp.size = getDistanceBetweenPoints3D(startX, startY, startZ, finalX, startY, startZ);
 					
 					table.insert(World.buildAreas, tmp)
 				end
@@ -90,6 +92,12 @@ function getModelFromType(id)
 	
 	if l[id] then
 		return l[id];
+	end
+end
+
+function getBuildAreas()
+	if World.buildAreas then
+		return World.buildAreas;
 	end
 end
 
