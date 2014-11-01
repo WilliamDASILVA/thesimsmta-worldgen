@@ -15,9 +15,11 @@ Town = {}
 function Town.init()
 	
 	-- load town
-	if getElementData(getLocalPlayer(), "townID") then
-		setElementDimension(getLocalPlayer(), getElementData(getLocalPlayer(), "townID"))
-		World.generate(getElementData(getLocalPlayer(), "townID"), getLocalPlayer());
+	local userdata = getElementData(getLocalPlayer(), "userdata")
+	if userdata['townID'] then
+		setElementData(getLocalPlayer(),"townID", userdata['townID']);
+		setElementDimension(getLocalPlayer(), userdata.townID)
+		World.generate(userdata.townID, getLocalPlayer());
 	end
 
 end
