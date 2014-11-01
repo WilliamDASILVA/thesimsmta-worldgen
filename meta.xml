@@ -2,12 +2,14 @@
 	<infos name="The Sims MTA World" author="FatalTerror" version="2.0" type="script"></infos>
 
 	<!-- Client -->
+	<script src="client/world.lua" type="client"/>
 	<script src="client/main.lua" type="client"/>
 	<script src="client/town.lua" type="client"/>
 
 	<!-- Server -->
 	<script src="server/main.lua" type="server"/>
 	<script src="server/town.lua" type="server"/>
+	<script src="server/world.lua" type="server"/>
 	
 	<!-- Files -->
 	<file src="models/corner_long.col"></file>
