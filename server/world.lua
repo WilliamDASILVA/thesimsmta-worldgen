@@ -16,6 +16,7 @@ World.objects = {}
 	the array index is the dimension (aka the townID)
 	They're created only if the player is nearly
 ]]
+World.houseEmplacements = {}
 
 --[[
 			[function] World.generate(int townID)
@@ -27,6 +28,8 @@ World.objects = {}
 function World.generate(townID)
 
 	World.objects[townID] = {};
+	World.houseEmplacements[townID] = {};
+
 	local xml = xmlLoadFile("towns/"..townID..".xml");
 	if xml then
 		local childNodes = xmlNodeGetChildren(xml);
@@ -58,16 +61,21 @@ function World.generate(townID)
 				t.ry = 0;
 				t.rz = 0;
 				t.typ = 2675;
+				t.width = t.x + 15;
+				t.height = t.y + 15;
 
 				table.insert(World.objects[townID], t);
+				table.insert(World.houseEmplacements[townID], t);
 
 			end
 
 
 		end
 
+		outputChatBox("HOUSES LOADED:"..#World.houseEmplacements[townID]);
 
-		triggerClientEvent(client, "World.loaded", client, World.objects[townID]);
+
+		triggerClientEvent(client, "World.loaded", client, World.objects[townID], World.houseEmplacements[townID]);
 
 		xmlUnloadFile(xml);
 	else

@@ -8,11 +8,11 @@
 
 
 	<road type="normal" posX="0" posY="1" posZ="0" rotX="0" rotY="0" rotZ="0"/>
-	<house posX="1" posY="1" posZ="0">
-	</house>
+		<house posX="1" posY="1" posZ="0">
+		</house>
 	<road type="normal" posX="2" posY="1" posZ="0" rotX="0" rotY="0" rotZ="0"/>
-	<house posX="3" posY="1" posZ="0">
-	</house>
+		<house posX="3" posY="1" posZ="0">
+		</house>
 	<road type="normal" posX="4" posY="1" posZ="0" rotX="0" rotY="0" rotZ="0"/>
 
 	<road type="t" posX="0" posY="2" posZ="0" rotX="0" rotY="0" rotZ="90"/>
@@ -22,11 +22,11 @@
 	<road type="t" posX="4" posY="2" posZ="0" rotX="0" rotY="0" rotZ="270"/>
 
 	<road type="normal" posX="0" posY="3" posZ="0" rotX="0" rotY="0" rotZ="0"/>
-	<house posX="1" posY="3" posZ="0">
-	</house>
+		<house posX="1" posY="3" posZ="0">
+		</house>
 	<road type="normal" posX="2" posY="3" posZ="0" rotX="0" rotY="0" rotZ="0"/>
-	<house posX="3" posY="3" posZ="0">
-	</house>
+		<house posX="3" posY="3" posZ="0">
+		</house>
 	<road type="normal" posX="4" posY="3" posZ="0" rotX="0" rotY="0" rotZ="0"/>
 
 	<road type="corner" posX="0" posY="4" posZ="0" rotX="0" rotY="0" rotZ="0"/>

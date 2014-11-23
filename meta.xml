@@ -28,5 +28,6 @@
 
 	<!-- Export functions -->
 	<export function="TownInit" type="client"></export>
+	<export function="getBuildingAreas" type="client"></export>
 
 </meta>
